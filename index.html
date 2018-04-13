@@ -26,7 +26,28 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
     <script type="text/javascript">
-    	
+    	$(document).ready(function(){
+           $("#search").click(function(){
+            $.ajax({
+                url:'/meaning',
+                method:'GET',
+                success: function(data){
+                    console.log(data)
+                    $('#receive').attr('value',data);
+                }
+            })
+            var words={'finding':$("#finding").val()
+        };
+        $.ajax({
+            url:"/",
+            method:"post";
+            data:words,
+            success:function(data){
+                window.location=data;
+            }
+        });
+           });
+        });
     </script>
 </body>
 </html>
